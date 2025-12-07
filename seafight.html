@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./seafight.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ship Shooting</title>
+</head>
+<body>
+    <div class="controls">
+        <button id="startGame" class="btn">Начать игру</button>
+        <div class="counter">
+            Занято клеток: <span id="usedCells">0</span> / 20
+        </div>
+    </div>
+
+    <div class="ships-container">
+        <div class="ship" data-size="4" draggable="true">4 клетки</div>
+        <div class="ship" data-size="3" draggable="true">3 клетки</div>
+        <div class="ship" data-size="3" draggable="true">3 клетки</div>
+        <div class="ship" data-size="2" draggable="true">2 клетки</div>
+        <div class="ship" data-size="2" draggable="true">2 клетки</div>
+        <div class="ship" data-size="2" draggable="true">2 клетки</div>
+        <div class="ship" data-size="1" draggable="true">1 клетка</div>
+        <div class="ship" data-size="1" draggable="true">1 клетка</div>
+        <div class="ship" data-size="1" draggable="true">1 клетка</div>
+        <div class="ship" data-size="1" draggable="true">1 клетка</div>
+    </div>
+
+    <div class="game-status" id="gameStatus">
+        Расставьте корабли и нажмите "Начать игру"
+    </div>
+
+    <div class="container">
+        <div class="pole">
+            <div class="pole-title">Ваше поле</div>
+            <div class="poles-first" id="playerField"></div>
+        </div>
+        <div class="pole">
+            <div class="pole-title">Поле противника</div>
+            <div class="poles-second" id="enemyField"></div>
+        </div>
+    </div>
+
+    <script src="./seafight.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Панель управления */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    background: #32CD32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #28a428;
+    transform: translateY(-2px);
+}
+
+.btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Контейнер с кораблями для перетаскивания */
+.ships-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.ship {
+    padding: 10px 15px;
+    background: #2E8B57;
+    color: white;
+    border-radius: 5px;
+    cursor: grab;
+    user-select: none;
+    border: 2px solid #228B22;
+}
+
+.ship:active {
+    cursor: grabbing;
+    background: #3CB371;
+}
+
+.ship.disabled {
+    background: #666;
+    border-color: #999;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Счетчик клеток */
+.counter {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.counter.limit-reached {
+    color: #ff6b6b;
+}
+
+/* Статус игры */
+.game-status {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    min-height: 30px;
+}
+
+.game-status.player-turn {
+    color: #90EE90;
+}
+
+.game-status.enemy-turn {
+    color: #FFB6C1;
+}
+
+.game-status.win {
+    color: #32CD32;
+    font-size: 24px;
+}
+
+.game-status.lose {
+    color: #FF4444;
+    font-size: 24px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.pole {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pole-title {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.poles-first, .poles-second{
+    margin-top: 20px;
+    height: 600px;
+    width: 600px;
+    background-color: #87CEEB;
+    border-radius: 20px;
+    border: 3px solid #4682B4;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 2px;
+    padding: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.cell {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid #4682B4;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cell:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.cell.has-ship {
+    background-color: #2E8B57;
+}
+
+/* Состояния клеток при стрельбе */
+.cell.hit {
+    background-color: #FF4444;
+    border-color: #CC0000;
+}
+
+.cell.miss {
+    background-color: #B0C4DE;
+    border-color: #778899;
+}
+
+.cell.enemy-ship {
+    /* Корабли противника не показываем */
+}
+
+.cell.enemy-ship.hit {
+    background-color: #FF4444;
+    border-color: #CC0000;
+}
+
+/* Адаптивность */
+@media (max-width: 1300px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .poles-first, .poles-second {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+@media (max-width: 600px) {
+    .poles-first, .poles-second {
+        width: 400px;
+        height: 400px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 450px) {
+    .poles-first, .poles-second {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .ships-container {
+        gap: 5px;
+    }
+    
+    .ship {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
